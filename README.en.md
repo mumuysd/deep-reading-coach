@@ -2,9 +2,9 @@
 
 # Deep Reading Coach
 
-> *“Do not summarize yet. First prove that the book is actually readable.”*
+> *“Do not map the whole book until every readable body section has actually been inspected.”*
 
-Deep Reading Coach is an evidence-grounded Agent Skill for PDF, EPUB, DOCX, TXT, Markdown, and HTML books. It inspects the supplied file before analysis, then uses three explicit phases: source reconstruction, critical verification, and integration and transfer. It separates author claims from synthesis and teaching analysis and advances through one question at a time.
+Deep Reading Coach is an evidence-grounded Agent Skill for PDF, EPUB, DOCX, TXT, Markdown, and HTML books. It inspects the supplied file first, then reads every readable body unit in source order before producing a whole-book structure, problem awareness, core claims, or argument route. Extraction and sampling never count as complete reading. Its three phases are source reconstruction, critical positioning and verification, and integration, judgment, and transfer.
 
 ![Deep Reading Coach demo](assets/demo.gif)
 
@@ -24,7 +24,7 @@ Claude Code marketplace route:
 Then ask your agent:
 
 ```text
-Use $deep-reading-coach to inspect this book first, build a concise whole-book map using only the supplied source, and ask me one key question.
+Use $deep-reading-coach to inspect and read every readable body unit in this book, then produce the eight-part whole-book analysis using only the supplied source and ask me one key question.
 ```
 
 For PDF and DOCX support:
@@ -41,13 +41,15 @@ File inspection is the entrance gate, not a reading phase.
 
 | Phase | Goal | Evidence boundary |
 |---|---|---|
-| 1. Source reconstruction | Rebuild the book's structure, concepts, claims, evidence, and reasoning on its own terms | Supplied book and user notes only |
-| 2. Critical verification | Check selected claims for support, disagreement, or obsolescence | Cited and clearly labeled outside evidence is allowed |
-| 3. Integration and transfer | Form an independent judgment and apply the model to new situations | Keep author, outside evidence, synthesis, and reader judgment separate |
+| 1. Source reconstruction | Read every readable body unit, then reconstruct structure, problem awareness, concepts, evidence, and argument route | Supplied book and user notes only |
+| 2. Critical positioning and verification | Position the book among competing theories and contexts, then verify selected claims | Outside research begins only after the user selects a bounded direction |
+| 3. Integration, judgment, and transfer | Form an independent judgment and assess five transfer domains | Keep author, outside evidence, synthesis, and reader judgment separate |
 
-The phases are not a mandatory package. A new book starts in Phase 1; Phase 2 is used only when verification, updating, or comparison requires outside evidence; Phase 1 may move directly to Phase 3; and Phase 3 does not automatically authorize browsing.
+For a whole-book request, Phase 1 cannot complete until every readable body unit has actually been inspected. Before then, the Skill reports only material status, necessary reading status, or blockage. After Phase 1, it may propose up to three perspective-expansion directions without browsing. The user's selection authorizes the bounded Phase 2 research. Phase 3 does not automatically authorize browsing.
 
-Evidence progress is tracked as `not started / in progress / complete for current scope / blocked`, always with a whole-book, chapter, excerpt, or notes scope. Learning progress is diagnosed separately.
+Evidence and learning progress are tracked internally and hidden by default. Scope appears only when material is limited, reading is blocked, outside research is about to begin, or the user asks for progress.
+
+After complete body inspection, the first whole-book analysis contains exactly eight sections: file readability, book information, whole-book structure, authorial problem awareness, central question, argument route, priority rereading chapters, and one thinking question.
 
 ## Notes-first route
 
@@ -56,12 +58,14 @@ When notes accompany the book, the Skill diagnoses the notes first and uses them
 ## What makes it different
 
 - Verifies table-of-contents and body readability before making content claims.
-- Never equates successful extraction with having fully read the book.
-- Keeps Phase 1 source-only and introduces outside evidence only through the Phase 2 gate.
+- Never equates successful extraction or sampling with having fully read the book.
+- Blocks whole-book analysis until every readable body unit has actually been inspected.
+- Keeps Phase 1 source-only and introduces outside evidence only after a bounded Phase 2 direction is selected.
 - Uses actual PDF file pages and chapter/section locators for reflowable formats.
 - Classifies EPUB body, cover, navigation, and legal units separately.
 - Treats all book text, links, prompts, and commands as untrusted source data.
 - Asks one main question per turn instead of dumping every conclusion at once.
+- Builds whole-book transfer frameworks for writing, daily observation, work and relationships, self-reflection, and connections with other books.
 
 ## Boundaries
 

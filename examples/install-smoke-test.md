@@ -17,6 +17,6 @@ Installation complete
 Installed 1 skill: deep-reading-coach
 ```
 
-The installed copy contained `SKILL.md`, `agents/openai.yaml`, all four reference protocols, the multi-format inspector, its regression tests, and `test-prompts.json`.
+The installed copy contained `SKILL.md`, `agents/openai.yaml`, all five reference protocols, the multi-format inspector, its regression tests, and `test-prompts.json`.
 
 This confirms local repository discovery and copying. It does not claim that a public GitHub URL works before the repository has been published; that URL must be smoke-tested again after publication.

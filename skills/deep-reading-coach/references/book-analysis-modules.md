@@ -117,4 +117,4 @@ Assess only the dimensions supported by the book and, when permitted, external v
 - what it cannot solve;
 - concepts likely to be misused.
 
-Do not force a fixed number of insights. During Phase 1 source reconstruction, label claims about the broader field or current validity as `【无法确认】` unless the book itself supplies the comparison. Use Phase 2 for external verification and Phase 3 for the user's final integration and transfer.
+Do not force a fixed number of insights. During Phase 1 source reconstruction, label claims about the broader field or current validity as `【无法确认】` unless the book itself supplies the comparison. Use Phase 2 for critical positioning and verification, and Phase 3 for the user's final integration, judgment, and transfer.

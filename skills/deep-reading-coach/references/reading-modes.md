@@ -15,7 +15,7 @@ Select one mode from the user's material and intent. If the user names a mode, u
 
 - Guided reading: the user has just read a chapter, has incomplete notes, or wants understanding checked step by step.
 - Reading-note review: the user supplies their own notes and wants accuracy, omissions, structural gaps, external claims, or personal judgments checked.
-- Whole-book map: the user is beginning a book and wants its central problem, architecture, route, and reading priorities.
+- Whole-book map: the user supplies a complete book and wants its central problem, architecture, argument route, and reading priorities after complete body inspection.
 - Whole-book integration: the user has read multiple chapters or supplied multiple notes and wants a coherent knowledge system.
 
 State the chosen mode and evidence briefly. Do not force all modes into one response.
@@ -24,7 +24,7 @@ State the chosen mode and evidence briefly. Do not force all modes into one resp
 
 Modes describe the interaction format; phases describe the evidence goal. They are not a single sequence.
 
-- Whole-book map normally begins in Phase 1 source reconstruction.
+- Whole-book map belongs to Phase 1 source reconstruction and may be output only after every readable body unit has been actually inspected.
 - Guided reading can reconstruct a chapter in Phase 1, verify a selected claim in Phase 2, or test transfer in Phase 3.
 - Reading-note review uses notes as navigation: source summaries route to Phase 1, external claims to Phase 2, and personal judgments or applications to Phase 3.
 - Whole-book integration normally belongs to Phase 3, but complete any necessary claim verification under Phase 2 before incorporating it.
@@ -94,27 +94,32 @@ Before treating an omitted note item as missing understanding, ask whether the u
 
 ## 5. Whole-Book Map
 
-Use the table of contents and actually inspected source passages. Do not rely on the title or an online summary.
+Inspect every readable `body` unit in source order before producing a whole-book map. Extraction, a table of contents, an introduction, chapter openings, a conclusion, selected chapters, or any other sample is insufficient. Use the table of contents for navigation only. Keep an internal coverage ledger for long books.
 
-First response only:
+Before full-body inspection completes, output only the material report and any necessary reading-status or blocking notice. Do not provide a provisional structure, problem awareness, core question, core claims, or argument route.
+
+After complete body inspection, output exactly:
 
 1. `文件读取情况`
 2. `书籍基本信息`
-3. `暂定的全书结构`
-4. `作者试图回答的核心问题`
-5. `建议优先阅读的章节`
-6. `一个需要我先思考的问题`
+3. `全书结构`
+4. `作者的问题意识`
+5. `作者试图回答的核心问题`
+6. `全书论证路线`
+7. `建议重点精读或重新阅读的章节`
+8. `一个需要我先思考的问题`
 
-Build the provisional map around the actual book rather than a fixed number of points. Identify:
+Build the map around the actual book rather than a fixed number of points. Identify:
 
 - the observed problem and shortcomings of prior explanations or methods;
 - the main question and subordinate questions;
 - the central conclusion or capability target;
-- the progression from foundations through evidence/method to application and limits;
+- the progression from problem through concepts and evidence to conclusion, application, and limits;
 - each section's function;
-- chapters to read closely, test personally, skim, or revisit later.
+- the reason the problem matters to the author;
+- chapters to read closely or revisit later.
 
-Revise the map when later chapters contradict the initial interpretation.
+If any substantive body unit is unreadable or missing, do not issue the eight-section response as a complete whole-book analysis. State the limitation and smallest next action.
 
 ## 6. Whole-Book Integration
 
@@ -127,13 +132,13 @@ Do not concatenate chapter summaries. Analyze:
 - contradictions across the user's notes;
 - missing bridge concepts.
 
-Output:
+After complete whole-book Phase 1 reconstruction, output:
 
-1. 全书问题主线
-2. 概念发展路线
-3. 章节之间的关系
-4. 我的理解发生了哪些变化
+1. 作者模型：问题主线、概念发展和章节关系
+2. 领域位置：已核实的思想谱系、竞争解释和争议
+3. 我的判断：依据、保留意见和适用边界
+4. 迁移地图：写作、生活观察、工作与人际、自我反思、跨书联系
 5. 尚未解决的关键问题
 6. 最值得重新阅读的章节
 
-End with one question or one next action, not both.
+Assess all five transfer domains, deepen only the genuinely useful ones, and follow [perspective-transfer.md](perspective-transfer.md). End with one question or one next action, not both.

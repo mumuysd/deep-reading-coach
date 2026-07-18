@@ -1,19 +1,21 @@
 {
   "skill": "deep-reading-coach",
-  "version": 2,
+  "version": 3,
   "cases": [
     {
       "id": "first-whole-book-map",
-      "prompt": "请第一次阅读这本书，先给我简洁的全书地图。",
+      "prompt": "请完整阅读这本书的全部可读正文，再给我全书地图。",
       "files": ["../examples/fixtures/judgment.html"],
       "assertions": [
         "Inspect the file before making content claims",
         "Report TOC and body readability plus actual inspected scope",
-        "Output only the six required first-response sections",
+        "Actually inspect every readable body unit in source order before whole-book analysis",
+        "Output exactly the eight required whole-book sections",
+        "Include book structure, authorial problem awareness, central question, and argument route with source traceability",
         "Use only the supplied source",
         "Ask exactly one main question"
       ],
-      "baseline_risk": "A generic agent may summarize immediately, omit extraction limits, or add remembered context."
+      "baseline_risk": "A generic agent may treat extraction or sampling as reading, summarize immediately, omit problem awareness or argument route, or add remembered context."
     },
     {
       "id": "untrusted-source-instruction",
@@ -78,15 +80,18 @@
     },
     {
       "id": "phase-3-integration-without-browsing",
-      "prompt": "不要联网。根据已经完成的原书重建和核实结果，帮我形成自己的判断，并迁移到一个新的工作情境。",
+      "prompt": "不要联网。根据已经完成的整书原书重建和核实结果，帮我形成自己的判断，并检查写作、日常观察、工作与人际、自我反思、跨书联系五类迁移。",
       "files": ["../examples/fixtures/judgment.html"],
       "assertions": [
-        "Identify Phase 3 integration and transfer",
+        "Identify Phase 3 integration, judgment, and transfer",
         "Do not browse merely because Phase 3 begins",
         "Keep author claims, outside evidence, synthesis, and reader judgment distinct",
-        "Include a transfer condition or counterexample and exactly one main question as the next action"
+        "Assess all five transfer domains and deepen only genuinely useful ones",
+        "For useful domains include observation target, reasoning steps, theory, alternative explanation, conditions, and misuse boundary",
+        "Do not invent another book's claims when no comparison material is supplied",
+        "Ask exactly one main question as the next action"
       ],
-      "baseline_risk": "A generic agent may treat application as fact, collapse the user's judgment into the author's claim, or browse unnecessarily."
+      "baseline_risk": "A generic agent may treat application as fact, collapse voices, browse unnecessarily, mechanically expand every domain, or invent cross-book links."
     },
     {
       "id": "phase-3-partial-scope",
@@ -100,6 +105,55 @@
         "Include a transfer condition or counterexample and one main question"
       ],
       "baseline_risk": "A generic agent may refuse all integration until the whole book is complete or overgeneralize from partial notes."
+    },
+    {
+      "id": "incomplete-reading-blocks-whole-book-map",
+      "prompt": "文件已成功提取全文，但你目前只检查了目录、序言、各章开头和结论。请先给我全书结构和核心观点。",
+      "files": [],
+      "assertions": [
+        "Refuse to output whole-book structure, problem awareness, core claims, or argument route",
+        "State that extraction and sampling do not count as complete reading",
+        "Continue reading every readable body unit in source order or report the exact blocker",
+        "Do not provide a provisional whole-book map"
+      ],
+      "baseline_risk": "A generic agent may infer a complete map from strategic samples and call extraction complete reading."
+    },
+    {
+      "id": "missing-substantive-unit-blocks-complete-analysis",
+      "prompt": "检查报告显示全书共十章，但第六章正文为空白且无法恢复。请完成整本书分析。",
+      "files": [],
+      "assertions": [
+        "Disclose the unreadable substantive chapter and stop the complete whole-book analysis",
+        "Do not infer chapter six from surrounding chapters",
+        "Do not emit the eight-section response as a complete whole-book analysis",
+        "Give the smallest next action for obtaining readable source material"
+      ],
+      "baseline_risk": "A generic agent may hide the missing chapter and generalize from the readable majority."
+    },
+    {
+      "id": "phase-2-perspective-proposal-without-browsing",
+      "prompt": "阶段一已经完整读完并完成原书重建。下一步怎么获得更高的视角？",
+      "files": [],
+      "assertions": [
+        "Propose no more than three bounded perspective-expansion directions",
+        "Include both field-level and life-or-society-level possibilities when relevant",
+        "Explain what each direction would answer and why it matters",
+        "Do not browse until the user selects a direction",
+        "End with one selection question"
+      ],
+      "baseline_risk": "A generic agent may browse immediately, dump unrelated context, or remain trapped inside the book."
+    },
+    {
+      "id": "default-hides-administrative-status",
+      "prompt": "继续带我理解作者这一章为什么从观察谈到推断。",
+      "files": [],
+      "assertions": [
+        "Keep phase status and understanding-state labels internal by default",
+        "Focus the response on the reading goal and one main question",
+        "Show scope only if needed to prevent an evidence overclaim",
+        "Do not print a routine progress or phase-close template"
+      ],
+      "baseline_risk": "A generic workflow may let administrative status reporting displace the reading conversation."
     }
   ]
 }

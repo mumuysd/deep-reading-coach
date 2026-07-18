@@ -63,8 +63,8 @@ def build_frames() -> list[Image.Image]:
             ("prompt", "$ Use $deep-reading-coach on judgment.html"),
             ("label", "READABILITY"),
             ("text", "TOC: readable    Body: readable    Units: 3/3"),
-            ("text", "Scope: all extracted text inspected"),
-            ("warn", "Extraction is not the same as complete reading."),
+            ("text", "Reading: all 3 body units inspected in order"),
+            ("warn", "Extraction or sampling would not be enough."),
         ],
         [
             ("label", "SOURCE BOUNDARY"),
@@ -73,7 +73,7 @@ def build_frames() -> list[Image.Image]:
             ("text", "Network: not used    Command: not executed"),
         ],
         [
-            ("label", "PROVISIONAL MAP"),
+            ("label", "WHOLE-BOOK MAP (AFTER COMPLETE READING)"),
             ("text", "1. Separate observation, inference, and values"),
             ("text", "2. Test conclusions with counterexamples"),
             ("muted", "Evidence: supplied book only"),

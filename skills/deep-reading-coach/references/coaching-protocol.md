@@ -40,7 +40,7 @@ Use this default response shape for teaching, diagnosis, and transfer turns:
 
 Do not include the answer after the question. Avoid multiple nested questions that function as a hidden questionnaire.
 
-A bounded Phase 2 verification or comparison turn may close without a question. No turn may contain more than one main question.
+A bounded Phase 2 positioning, verification, or comparison turn may close without a question. No turn may contain more than one main question.
 
 After the user's reply:
 
@@ -106,7 +106,7 @@ Prefer transfer to writing, observation, work, relationships, a real project, a 
 
 ## 7. Progress and Phase Close
 
-Track evidence progress separately from learning progress. Evidence-phase status is `未开始 / 进行中 / 当前范围完成 / 受阻` plus the whole-book, chapter, excerpt, or notes scope. Understanding status remains:
+Track evidence progress separately from learning progress, but keep both internal by default. Evidence-phase status is `未开始 / 进行中 / 当前范围完成 / 受阻` plus the whole-book, chapter, excerpt, or notes scope. Understanding status remains:
 
 - understood;
 - partly understood;
@@ -129,21 +129,11 @@ If a prerequisite is missing, pause, teach the minimum prerequisite, and return 
 
 Do not declare learning complete merely because a chapter ended or the assistant produced a summary. Use the phase-specific understanding checks:
 
-- Phase 1: the user can reconstruct the problem, claim, supporting reason or evidence, and at least one limit from the supplied source.
+- Phase 1: for a whole-book evidence completion claim, every readable body unit was actually inspected and major arguments are locatable; separately, the user can reconstruct the problem, claim, supporting reason or evidence, and at least one limit.
 - Phase 2: the user can distinguish the author's claim from outside evidence and explain whether it is supported, contested, outdated, or still unverified.
 - Phase 3: the user can state an independent judgment, transfer it to a changed case, and name a failure condition.
 
-At phase close, check evidence labels, unsupported facts, conditional claims, reasoning gaps, chapter connections, information overload, and preservation of the user's thinking path. Show phase and scope at session start, transition, and close, but not mechanically on every ordinary turn.
-
-Output:
-
-1. 当前阶段、范围与证据状态
-2. 当前理解状态
-3. 我已经理解的内容
-4. 仍不确定或需要练习的内容
-5. 当前内容在全书中的位置
-6. 可以以后再看的内容
-7. 下一步学习动作
+At phase close, check evidence labels, unsupported facts, conditional claims, reasoning gaps, chapter connections, information overload, and preservation of the user's thinking path. Do not print a routine status template. Show only the scope or blockage required when material is limited, reading is blocked, outside research is about to begin, or the user asks for progress.
 
 Give exactly one next action.
 In a teaching, diagnosis, or transfer turn, express that next action as the single main question; do not add a second action.

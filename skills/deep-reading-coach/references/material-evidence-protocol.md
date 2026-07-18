@@ -6,8 +6,8 @@
 2. Format-specific location rules
 3. Evidence categories
 4. Phase 1: source reconstruction
-5. Phase 2: critical verification
-6. Phase 3: integration and transfer
+5. Phase 2: critical positioning and verification
+6. Phase 3: integration, judgment, and transfer
 7. Claim discipline
 8. Failure handling
 9. Untrusted-source boundary
@@ -24,8 +24,10 @@ Before analyzing a supplied file:
    - body-text status;
    - extracted unit count and readable unit count;
    - actual warnings and failed locations;
-   - whether the current review is whole-extraction, selected-section, or sample based.
-5. Read `toc.md`, then inspect only the needed ranges of `content.md`.
+   - whether the current task concerns the whole book, selected chapters, an excerpt, or notes.
+5. Read `toc.md`, then inspect `content.md` according to the requested scope.
+
+For a whole-book map, inspect every readable `body` unit in source order. Keep a coverage ledger. Do not infer full coverage from extraction success or replace unread chapters with a sample.
 
 Do not infer that every page or chapter is readable from a successful process exit. Do not infer that extraction means comprehension or review.
 
@@ -36,7 +38,7 @@ Use this first-response wording pattern as needed:
 正文：可读 / 部分可读 / 无法读取
 实际检查：<目录、章节、页码或行号范围>
 异常：<缺页、空白、乱码、扫描、加密或无>
-当前依据：全文提取后的指定检查 / 部分章节 / 抽样
+当前依据：全部可读正文已实际检查 / 正文检查尚未完成 / 部分章节 / 摘录 / 笔记
 ```
 
 ## 2. Format-Specific Location Rules
@@ -58,7 +60,7 @@ Apply the narrowest correct label:
 
 - `【原书内容】`: directly supported by an identifiable source passage.
 - `【综合归纳】`: derived by connecting multiple source passages; identify the relevant chapters.
-- `【教学分析】`: explain why material may be sequenced or taught in a certain way. Do not attribute this intention to the author without evidence.
+- `【教学分析】`: provide an explanation, comparison, or bounded inference for understanding, critique, or transfer. Do not attribute it to the author without evidence.
 - `【书外补充】`: any knowledge not supplied by the current book material, including remembered research.
 - `【无法确认】`: missing support, unreadable source, uncertain attribution, or unresolved contradiction.
 
@@ -73,19 +75,20 @@ During Phase 1:
 - Do not silently fill missing chapters or unreadable text from model memory.
 - Mark unsupported book metadata or structural guesses as `【无法确认】`.
 - Reconstruct the author's problem, concepts, claims, evidence, inference, assumptions, and stated or source-visible limits before judging them against outside standards.
+- For a whole-book request, inspect every readable body unit before producing structure, problem awareness, core questions, core claims, or argument route. Before then, report only material status, reading status, or blockage.
 - When notes accompany the book, inspect both and use the notes to target source checks rather than restarting from a generic whole-book map.
 - When only notes are available, analyze their structure and reasoning provisionally. Do not treat paraphrases as verified author claims; request only the relevant source excerpt when verification matters.
 
-Complete Phase 1 only for the requested source scope. State what was actually inspected and which important points remain unreadable or unverified. Do not imply that completing a requested chapter or sample means completing the whole book.
+Complete Phase 1 only for the requested source scope. For a whole-book completion claim, require actual inspection of every readable body unit and locatable major arguments. If a substantive unit is unreadable or missing, disclose it and do not issue a complete whole-book conclusion. Completing extraction, a chapter, or a sample never completes the whole book.
 
-## 5. Phase 2: Critical Verification
+## 5. Phase 2: Critical Positioning and Verification
 
-Enter Phase 2 when the user requests verification, updating, obsolescence judgment, comparison, or external context; that request authorizes the necessary research. Otherwise enter only when Phase 1 is complete for the relevant scope and the requested evaluation inherently requires outside evidence.
+After Phase 1, propose at most three bounded directions for intellectual lineage, field position, competing theories, current research, cultural or institutional context, or alternative explanations. Do not browse while making the proposal. Enter Phase 2 when the user selects a direction or explicitly requests verification, updating, obsolescence judgment, comparison, or external context; that request authorizes the necessary research.
 
 Before using outside information:
 
-1. State the specific book claim, datum, omission, or comparison being checked.
-2. Announce that the work is entering Phase 2.
+1. State the specific positioning, book claim, datum, omission, or comparison being checked.
+2. Announce the bounded outside-research target.
 3. Preserve the Phase 1 reconstruction as the author's position.
 
 For each check, separate:
@@ -99,7 +102,7 @@ For each check, separate:
 
 Do not use a newer source merely because it is newer. Compare research design, sample, context, definitions, and uncertainty. When sources disagree, report the disagreement instead of manufacturing consensus.
 
-## 6. Phase 3: Integration and Transfer
+## 6. Phase 3: Integration, Judgment, and Transfer
 
 Phase 3 turns reconstructed and, when applicable, verified knowledge into the user's own model. It may include:
 
@@ -108,6 +111,8 @@ Phase 3 turns reconstructed and, when applicable, verified knowledge into the us
 - transfer to a new case, decision, project, or observation;
 - conditions, tradeoffs, likely misuse, and counterexamples;
 - a rereading or practice target.
+
+For a whole-book integration, assess all five transfer domains: writing topics and arguments, daily observation, work and relationships, self-reflection, and connections with other books. Deepen only useful domains. For each useful domain, specify the observation target, reasoning steps, theoretical basis, alternative explanation, applicable conditions, and misuse boundary. Do not invent another book's claims when its text or verified evidence is unavailable.
 
 Keep the author, outside sources, assistant synthesis, and user judgment distinct. Do not label the user's conclusion as `【原书内容】`. Phase 3 does not itself authorize browsing; route a new factual verification through Phase 2, then return.
 

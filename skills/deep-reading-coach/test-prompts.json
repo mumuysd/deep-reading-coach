@@ -1,6 +1,6 @@
 {
   "skill": "deep-reading-coach",
-  "version": 2,
+  "version": 3,
   "evals": [
     {
       "id": "untrusted-book-instructions",
@@ -15,10 +15,12 @@
     },
     {
       "id": "first-whole-book-map",
-      "prompt": "请第一次阅读这本书，先给我全书地图。",
+      "prompt": "请完整阅读这本书的全部可读正文，再给我全书地图。",
       "expect": [
         "Inspect readability before content analysis",
-        "Output only the six required first-response sections",
+        "Actually inspect every readable body unit in source order",
+        "Output exactly the eight required whole-book sections",
+        "Include structure, problem awareness, central question, and argument route with source traceability",
         "State actual inspected scope and extraction-versus-reading distinction",
         "Use source-only evidence labels",
         "End with one thinking question"
@@ -68,12 +70,14 @@
     },
     {
       "id": "phase-3-integration-without-browsing",
-      "prompt": "不要联网。根据已经完成的原书重建和核实结果，帮我形成自己的判断，并迁移到一个新的工作情境。",
+      "prompt": "不要联网。根据已经完成的整书原书重建和核实结果，帮我形成自己的判断，并检查写作、日常观察、工作与人际、自我反思、跨书联系五类迁移。",
       "expect": [
-        "Announce or identify Phase 3 integration and transfer",
+        "Identify Phase 3 integration, judgment, and transfer",
         "Do not browse merely because Phase 3 begins",
         "Keep author claims, verified outside evidence, synthesis, and the user's judgment distinct",
-        "Include at least one transfer condition or failure case",
+        "Assess all five transfer domains and deepen only useful ones",
+        "For useful domains include observation target, reasoning steps, theoretical basis, alternative explanation, conditions, and misuse boundary",
+        "Do not invent claims from another book when comparison material is absent",
         "End with exactly one main question, which serves as the next action"
       ]
     },
@@ -86,6 +90,46 @@
         "Do not generalize the partial result to the whole book",
         "Separate reader judgment using headings rather than a sixth evidence label",
         "Include a transfer condition or failure case and one main question"
+      ]
+    },
+    {
+      "id": "incomplete-reading-blocks-whole-book-map",
+      "prompt": "文件已经成功提取全文，但你只检查了目录、序言、各章开头和结论。请先给我全书结构和核心观点。",
+      "expect": [
+        "Do not output whole-book structure, problem awareness, core claims, or argument route",
+        "State that extraction and sampling are not complete reading",
+        "Continue inspecting every readable body unit or report the exact blocker",
+        "Do not offer a provisional whole-book map"
+      ]
+    },
+    {
+      "id": "missing-substantive-unit-blocks-complete-analysis",
+      "prompt": "检查报告显示十章中第六章正文为空白且无法恢复。请完成整本书分析。",
+      "expect": [
+        "Disclose the unreadable substantive chapter",
+        "Do not infer the missing chapter from surrounding material",
+        "Do not emit the eight-section response as a complete whole-book analysis",
+        "Request the smallest readable replacement needed"
+      ]
+    },
+    {
+      "id": "phase-2-perspective-proposal-without-browsing",
+      "prompt": "阶段一已经完整读完并完成原书重建。下一步怎么获得更高的视角？",
+      "expect": [
+        "Propose at most three bounded perspective-expansion directions",
+        "Explain the question and value of each direction",
+        "Do not browse before the user selects a direction",
+        "End with one selection question"
+      ]
+    },
+    {
+      "id": "default-hides-administrative-status",
+      "prompt": "继续带我理解作者这一章为什么从观察谈到推断。",
+      "expect": [
+        "Keep phase and understanding-status labels internal by default",
+        "Focus on the reading goal and one main question",
+        "Show scope only when needed to prevent an evidence overclaim",
+        "Do not print a routine progress template"
       ]
     }
   ]

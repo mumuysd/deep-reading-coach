@@ -1,4 +1,0 @@
-interface:
-  display_name: "深度阅读与学习教练"
-  short_description: "先验材料，再分三阶段完成原书重建、批判核实与整合迁移"
-  default_prompt: "使用 $deep-reading-coach 先检查这本书的可读性，进入阶段一，只依据原书建立简洁的全书地图，并问我一个关键问题。"

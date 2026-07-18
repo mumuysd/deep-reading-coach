@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "deep-reading-coach",
+  "version": "1.0.0",
+  "description": "Evidence-grounded multi-format book reading with complete-body inspection, three-phase analysis, and one-question coaching.",
+  "owner": {
+    "name": "Deep Reading Coach contributors"
+  },
+  "plugins": [
+    {
+      "name": "deep-reading-coach",
+      "description": "Read every readable body unit before whole-book analysis, then support critical positioning, independent judgment, and bounded transfer.",
+      "version": "1.0.0",
+      "author": {
+        "name": "Deep Reading Coach contributors"
+      },
+      "source": "./",
+      "category": "productivity",
+      "strict": false,
+      "skills": [
+        "./skills/deep-reading-coach"
+      ]
+    }
+  ]
+}

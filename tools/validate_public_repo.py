@@ -33,6 +33,7 @@ REQUIRED = [
     ROOT / "SECURITY.md",
     SKILL / "SKILL.md",
     SKILL / "agents" / "openai.yaml",
+    SKILL / "references" / "perspective-transfer.md",
     SKILL / "scripts" / "inspect_book.py",
     SKILL / "test-prompts.json",
 ]
@@ -76,8 +77,8 @@ def validate(release: bool) -> list[str]:
             fail(f"SKILL.md frontmatter is invalid YAML: {exc}", errors)
     for phase_heading in (
         "### Phase 1 — Source Reconstruction",
-        "### Phase 2 — Critical Verification",
-        "### Phase 3 — Integration and Transfer",
+        "### Phase 2 — Critical Positioning and Verification",
+        "### Phase 3 — Integration, Judgment, and Transfer",
     ):
         if phase_heading not in skill_text:
             fail(f"SKILL.md is missing three-phase heading: {phase_heading}", errors)
@@ -99,8 +100,8 @@ def validate(release: bool) -> list[str]:
     try:
         evals = json.loads((ROOT / "evals" / "evals.json").read_text(encoding="utf-8"))
         cases = evals.get("cases", [])
-        if len(cases) < 8:
-            fail("evals/evals.json must contain at least eight behavior cases", errors)
+        if len(cases) < 12:
+            fail("evals/evals.json must contain at least twelve behavior cases", errors)
         case_ids = {case.get("id") for case in cases}
         for required_id in (
             "note-review",
@@ -108,6 +109,10 @@ def validate(release: bool) -> list[str]:
             "phase-2-critical-verification",
             "phase-3-integration-without-browsing",
             "phase-3-partial-scope",
+            "incomplete-reading-blocks-whole-book-map",
+            "missing-substantive-unit-blocks-complete-analysis",
+            "phase-2-perspective-proposal-without-browsing",
+            "default-hides-administrative-status",
         ):
             if required_id not in case_ids:
                 fail(f"evals/evals.json is missing phase behavior case: {required_id}", errors)
@@ -126,6 +131,10 @@ def validate(release: bool) -> list[str]:
             "phase-2-critical-verification",
             "phase-3-integration-without-browsing",
             "phase-3-partial-scope",
+            "incomplete-reading-blocks-whole-book-map",
+            "missing-substantive-unit-blocks-complete-analysis",
+            "phase-2-perspective-proposal-without-browsing",
+            "default-hides-administrative-status",
         ):
             if required_id not in prompt_ids:
                 fail(f"test-prompts.json is missing phase behavior case: {required_id}", errors)
@@ -158,6 +167,8 @@ def validate(release: bool) -> list[str]:
         "## 安全边界",
         "assets/demo.gif",
         "## 致谢",
+        "完整阅读全部可读正文",
+        "八部分全书地图",
     ):
         if required_phrase not in readme:
             fail(f"README is missing required public section or phrase: {required_phrase}", errors)
@@ -190,6 +201,34 @@ def validate(release: bool) -> list[str]:
                 fail("public example fixture no longer produces a readable three-unit report", errors)
             if f"共 {characters} 个字符" not in example:
                 fail("public example character count is stale relative to the fixture", errors)
+            required_headings = (
+                "## 1. 文件读取情况",
+                "## 2. 书籍基本信息",
+                "## 3. 全书结构",
+                "## 4. 作者的问题意识",
+                "## 5. 作者试图回答的核心问题",
+                "## 6. 全书论证路线",
+                "## 7. 建议重点精读或重新阅读的章节",
+                "## 8. 一个需要我先思考的问题",
+            )
+            for heading in required_headings:
+                if heading not in example:
+                    fail(f"public whole-book example is missing required heading: {heading}", errors)
+            positions = [example.find(heading) for heading in required_headings]
+            if positions != sorted(positions):
+                fail("public whole-book example headings are out of order", errors)
+            if "全部 3 个正文单元均已按原书顺序实际检查" not in example:
+                fail("public whole-book example does not prove complete body inspection", errors)
+
+    forbidden_old_contract = (
+        "六部分的暂定全书地图",
+        "上方 Agent 回复只有六个首次阅读部分",
+        "### Phase 2 — Critical Verification",
+        "### Phase 3 — Integration and Transfer",
+    )
+    for phrase in forbidden_old_contract:
+        if phrase in skill_text or phrase in readme or phrase in (ROOT / "examples" / "first-whole-book-response.md").read_text(encoding="utf-8"):
+            fail(f"obsolete reading contract remains: {phrase}", errors)
     return errors
 
 

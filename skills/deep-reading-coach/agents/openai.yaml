@@ -1,0 +1,4 @@
+interface:
+  display_name: "深度阅读与学习教练"
+  short_description: "完整阅读原书，再完成批判定位、独立判断与现实迁移"
+  default_prompt: "使用 $deep-reading-coach 检查并完整阅读这本书的全部可读正文，再输出八部分全书地图并问我一个关键问题。"
